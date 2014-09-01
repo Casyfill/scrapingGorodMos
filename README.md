@@ -8,8 +8,9 @@ I. First step of scraping is getting all regions and zones ID. Zone ID's were sc
 script: *regions_scraper.py*  
 data: *regions_indexes.csv*
 
-II. (toDo) Scraping problem counters by type in each region
-III. (toDo) Scraping each problem by region.
+II. (done) Scraping problem counters by type in each region
+III. (toDo) group properties
+IV. (toDo) Scraping each problem by region.
 
 
 
