@@ -9,7 +9,9 @@ script: *regions_scraper.py*
 data: *regions_indexes.csv*
 
 II. (done) Scraping problem counters by type in each region
+
 III. (toDo) group properties
+
 IV. (toDo) Scraping each problem by region.
 
 
