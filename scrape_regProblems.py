@@ -134,8 +134,8 @@ urlArray = [{"okrug":"ЮЗАО","zone_index":101,"name":"Академическ�
 	]
 
 
-def scrapeProblemsRegion(zone, region):
-	url = "https://gorod.mos.ru/?show=problem&m=8&y=2014&zone=%d&district=%d" %(zone, region)
+def scrapeProblemsRegion(month, year,zone, region):
+	url = "https://gorod.mos.ru/?show=problem&m=%d&y=%d&zone=%d&district=%d" %(zone, region)
 
 	browser.get(url)
 	time.sleep(5)
@@ -182,7 +182,7 @@ with open(csvPath, 'a') as csvfile:
 		okrug = row['okrug']
 		okrug_id = row['zone_index']
 
-		result = scrapeProblemsRegion(okrug_id,district_id)
+		result = scrapeProblemsRegion(8,2014,okrug_id,district_id)
 		result['district'] = district
 		result['zone'] = okrug
 
