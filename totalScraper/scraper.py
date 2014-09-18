@@ -135,37 +135,39 @@ urlArray = [{"okrug":"ЮЗАО","zone_index":101,"name":"Академическ�
 # def scrapeProblemsRegion(zone, region):
 	# url = "https://gorod.mos.ru/?show=problem&m=8&y=2014&zone=%d&district=%d" %(zone, region)
 
-url = "https://gorod.mos.ru/?show=problem&id_theme=515"
-browser.get(url)
-browser.implicitly_wait(15)
+def scrapePage(url):
+	# url = "https://gorod.mos.ru/?show=problem&id_theme=515"
+	browser.get(url)
+	browser.implicitly_wait(15)
 
 
-paginator = browser.find_element_by_css_selector('div.pagination')
+	paginator = browser.find_element_by_css_selector('div.pagination')
 
-pages = paginator.find_elements_by_css_selector('a[data-page]')
-pageNum = int(pages[-1].text)
-print pageNum
+	pages = paginator.find_elements_by_css_selector('a[data-page]')
+	pageNum = int(pages[-1].text)
+	print pageNum
 
 
-for i in xrange(1,min(pageNum,10)+1):
-	if i==1:
+	for i in xrange(1,min(pageNum,10)+1):
+		if i==1:
 
-		# SCRAPE PAGE
-		print 'first scraped'
-	else:
-		selector = 'a[data-page="%d"]' %(i) 
+			# SCRAPE PAGE
+			print 'first scraped'
+		else:
+			selector = 'a[data-page="%d"]' %(i) 
+				
+			paginator = browser.find_element_by_css_selector('div.pagination')
+			page = paginator.find_element_by_css_selector(selector)
+			page.click()
 			
-		paginator = browser.find_element_by_css_selector('div.pagination')
-		page = paginator.find_element_by_css_selector(selector)
-		page.click()
-		
-		# SCRAPE PAGE
-		print i, ' scraped'
-		time.sleep(15)
+			# SCRAPE PAGE
+			print i, ' scraped'
+			time.sleep(15)
 
 
-print 'done!'
-browser.close()
+	print 'done!'
+	browser.close()
+
 
 
 
